@@ -14,6 +14,7 @@ spl_autoload_register(function ($class) {
     require base_path("{$class}.php");
 });
 
+require base_path('bootstrap.php');
 
 // routes.php uses Router methods to load router $routes with available request paths and their controllers (file paths)
 // Request uri and method is read from $_SERVER global variable and feed to route method
