@@ -1,10 +1,14 @@
 <?php
 
-return [
-    '/' => 'controllers/index.php',
-    '/about' => 'controllers/about.php',
-    '/notes' => 'controllers/notes.php',
-    '/notes/create' => 'controllers/note-create.php',
-    '/note' => 'controllers/note.php',
-    '/contact' => 'controllers/contact.php',
-];
+// This file is required at public/index.php
+
+$router->get('/', 'controllers/index.php');
+$router->get('/about', 'controllers/about.php');
+$router->get('/contact', 'controllers/contact.php');
+
+$router->get('/notes', 'controllers/notes/index.php');
+$router->post('/notes', 'controllers/notes/store.php');
+$router->get('/notes/create', 'controllers/notes/create.php');
+
+$router->get('/note', 'controllers/notes/show.php');
+$router->delete('/note', 'controllers/notes/destroy.php');

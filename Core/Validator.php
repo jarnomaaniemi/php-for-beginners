@@ -1,5 +1,10 @@
 <?php
 
+namespace Core;
+
+/**
+ * Input validator class
+ */
 class Validator
 {
     // Pure function = not dependent of "outside world" (ex. no reference to $this)

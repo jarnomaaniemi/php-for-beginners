@@ -1,6 +1,12 @@
 <?php
 
-// connect to mysql database and execute query
+namespace Core;
+
+use PDO;
+
+/**
+ * Establish database connection to mysql database and execute query
+ */
 class Database
 {
     public $connection;
@@ -25,11 +31,13 @@ class Database
         return $this;
     }
 
+    // fetchAll()
     public function get()
     {
         return $this->statement->fetchAll();
     }
 
+    // fecth()
     public function find()
     {
         return $this->statement->fetch();
