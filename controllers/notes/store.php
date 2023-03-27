@@ -6,6 +6,10 @@ use Core\Validator;
 
 require base_path('Core/Validator.php');
 
+/**
+ * Database class
+ * @var object $db
+ */
 $db = App::resolve(Database::class);
 
 $errors = [];
@@ -23,7 +27,7 @@ if (!empty($errors)) {
 
 $db->query('insert into notes(body, user_id) values(:body, :user_id)', [
     'body' => $_POST['body'],
-    'user_id' => 3
+    'user_id' => $_SESSION['user']['id']
 ]);
 
 header('location: /notes');

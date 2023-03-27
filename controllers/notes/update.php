@@ -6,9 +6,11 @@ use Core\Validator;
 
 require base_path('Core/Validator.php');
 
+/**
+ * Database class
+ * @var object $db
+ */
 $db = App::resolve(Database::class);
-
-$currentUserId = 3;
 
 // find corresponding note
 $note = $db->query(
@@ -19,7 +21,7 @@ $note = $db->query(
 )->findOrFail();
 
 // authorize current user
-authorize($note['user_id'] === $currentUserId);
+authorize($note['user_id'] === $_SESSION['user']['id']);
 
 // validate form
 $errors = [];

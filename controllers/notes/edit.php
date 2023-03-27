@@ -3,9 +3,11 @@
 use Core\App;
 use Core\Database;
 
+/**
+ * Database class
+ * @var object $db
+ */
 $db = App::resolve(Database::class);
-
-$currentUserId = 3;
 
 $note = $db->query(
     'select * from notes where id = :id',
@@ -14,7 +16,7 @@ $note = $db->query(
     ]
 )->findOrFail();
 
-authorize($note['user_id'] === $currentUserId);
+authorize($note['user_id'] === $_SESSION['user']['id']);
 
 view('notes/edit.view.php', [
     'heading' => 'Edit Note',

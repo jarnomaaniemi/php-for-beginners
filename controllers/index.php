@@ -1,5 +1,6 @@
 <?php
 
 view('index.view.php', [
-    'heading' => 'Home'
+    'heading' => 'Home',
+    'user' => $_SESSION['user']['email'] ?? 'Guest'
 ]);

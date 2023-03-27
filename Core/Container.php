@@ -2,20 +2,27 @@
 
 namespace Core;
 
+/**
+ * Simplified service container.
+ * A container is a class or a data structure whose instances are collections of other objects.
+ * @see https://en.wikipedia.org/wiki/Container_(abstract_data_type)
+ */
 class Container
 {
     protected $bindings = [];
 
     /**
-     * Add to container bindings
+     * Add to container
+     * @param string $key Identifier
+     * @param function $resolver e.g. builder funtion to create Database object
      */
-    public function bind($key, $function)
+    public function bind($key, $resolver)
     {
-        $this->bindings[$key] = $function;
+        $this->bindings[$key] = $resolver;
     }
 
     /**
-     * "Take out" of container to use it
+     * @param string $key Identifier to call a resolver from the container
      */
     public function resolve($key)
     {
